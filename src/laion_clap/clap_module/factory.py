@@ -51,10 +51,10 @@ _rescan_model_configs()  # initial populate of model config registry
 
 
 def load_state_dict(checkpoint_path: str, map_location="cpu", skip_params=True):
-   if version.parse(torch.__version__) < version.parse("2.6"):
-       checkpoint = torch.load(checkpoint_path, map_location=map_location)
-   else:
-       checkpoint = torch.load(checkpoint_path, map_location=map_location, weights_only=False)
+    if version.parse(torch.__version__) < version.parse("2.6"):
+        checkpoint = torch.load(checkpoint_path, map_location=map_location)
+    else:
+        checkpoint = torch.load(checkpoint_path, map_location=map_location, weights_only=False)
        
     if isinstance(checkpoint, dict) and "state_dict" in checkpoint:
         state_dict = checkpoint["state_dict"]
